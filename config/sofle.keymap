@@ -19,7 +19,7 @@
         label = "LEFT_ENCODER";
         a-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        steps = <120    >;
+        steps = <129>;
     };
     right_encoder: encoder_right {
         compatible = "alps,ec11";
@@ -175,7 +175,7 @@
         wait-ms = <0>;
         bindings
             = <&macro_press   &kp LALT>
-            , <&macro_tap     &kp KP_PLUS &kp KP_N0 &kp KP_N0 &kp E &kp KP_N4>00
+            , <&macro_tap     &kp KP_PLUS &kp KP_N0 &kp KP_N0 &kp E &kp KP_N4>
             , <&macro_release &kp LALT>;
         }; 
         lumlaut_a: lumlaut_a {
@@ -1258,10 +1258,10 @@
 &kp TAB &kp Q  &kp W      &kp E    &kp R     &kp T                              &kp Y      &kp U     &kp I     &kp O    &kp P    &kp DEL
 &clcw   &kp A  &kp S      &kp D    &kp F     &kp G                              &kp H      &kp J     &kp K     &kp L    &kp SEMI &kp SQT
 &lscw   &kp Z  &kp X      &kp C    &kp V     &kp B      &kp C_MUTE &close_tab   &kp N      &kp M     &kp COMMA &kp DOT  &kp FSLH &rscw
-              &kp LALT &kp LCTRL &lwin_cad &td_ll_l3  &kp SPACE  &ret_menu &td_rl_l3  &kp RCTRL &kp RALT  &kp RGUI
+               &lwin_cad  &kp LALT &kp LCTRL &td_ll_l3  &kp SPACE &ret_menu      &td_rl_l3  &kp RCTRL &kp RALT  &kp RGUI
             >;
 
-            sewnsor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &tab_browser>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &tab_browser>;
         };
 
         lower_layer {
@@ -1320,5 +1320,3 @@
         };
     };
 };
-
-
