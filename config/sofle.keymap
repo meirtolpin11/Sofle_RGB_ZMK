@@ -1116,20 +1116,6 @@
             tapping-term-ms = <200>;
             bindings = <&kp CLCK>, <&caps_word>;
         };
-        lscw: lscw {
-            compatible = "zmk,behavior-tap-dance";
-            label = "LEFT_SHIFT_CAPS_WORD";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp LSHFT>, <&caps_word>;
-        };
-        rscw: rscw {
-            compatible = "zmk,behavior-tap-dance";
-            label = "RIGHT_SHIFT_CAPS_WORD";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp RSHFT>, <&caps_word>;
-        };
         stm: stm {
             compatible = "zmk,behavior-tap-dance";
             label = "SHIFT_TASK_MANAGER";
