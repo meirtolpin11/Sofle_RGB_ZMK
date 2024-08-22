@@ -17,21 +17,21 @@
     left_encoder: encoder_left {
         compatible = "alps,ec11";
         label = "LEFT_ENCODER";
-        a-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        a-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <60>;
     };
     right_encoder: encoder_right {
         compatible = "alps,ec11";
         label = "RIGHT_ENCODER";
-        a-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        a-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <60>;
     };
     sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder &right_encoder>;
-        triggers-per-rotation = <15>;
+        triggers-per-rotation = <30>;
     };
 };
 
@@ -812,6 +812,107 @@
         };
     };
 };
+//Combos, note that key listing is zero indexed
+//lshift: 36
+//rshift: 49
+/ {
+    combos {
+        compatible = "zmk,combos";
+// Characters
+        combo_sm_lat_ae {
+            timeout-ms = <200>;
+            layers = <3>;
+            key-positions = <15 25>;
+            bindings = <&smlat_ae>;
+        };
+        combo_lg_lat_ae {
+            timeout-ms = <200>;
+            layers = <3>;
+            key-positions = <15 25 49>;
+            bindings = <&lglat_ae>;
+        };
+// Fractions
+        combo_one_half {
+            timeout-ms = <20>;
+            layers = <0>;
+            key-positions = <1 2>;
+            bindings = <&one_half>;
+        };
+        combo_one_third {
+            timeout-ms = <20>;
+            layers = <0>;
+            key-positions = <1 3>;
+            bindings = <&one_third>;
+        };
+        combo_one_fourth {
+            timeout-ms = <20>;
+            layers = <0>;
+            key-positions = <1 4>;
+            bindings = <&one_fourth>;
+        };
+        combo_one_eighth {
+            timeout-ms = <20>;
+            layers = <0>;
+            key-positions = <1 8>;
+            bindings = <&one_eighth>;
+        };
+        combo_two_thirds {
+            timeout-ms = <20>;
+            layers = <0>;
+            key-positions = <2 3>;
+            bindings = <&two_thirds>;
+        };
+        combo_three_fourths {
+            timeout-ms = <20>;
+            layers = <0>;
+            key-positions = <3 4>;
+            bindings = <&three_fourths>;
+        };
+        combo_three_eighths {
+            timeout-ms = <20>;
+            layers = <0>;
+            key-positions = <3 8>;
+            bindings = <&three_eighths>;
+        };
+        combo_five_eighths {
+            timeout-ms = <20>;
+            layers = <0>;
+            key-positions = <5 8>;
+            bindings = <&five_eighths>;
+        };
+        combo_seven_eighths {
+            timeout-ms = <20>;
+            layers = <0>;
+            key-positions = <7 8>;
+            bindings = <&seven_eighths>;
+        };
+    // Operators
+        combo_less_equal {
+            timeout-ms = <200>;
+            layers = <2>;
+            key-positions = <15 37>;
+            bindings = <&less_equ>;
+        };
+        combo_gtr_equal {
+            timeout-ms = <200>;
+            layers = <2>;
+            key-positions = <16 37>;
+            bindings = <&gtr_equ>;
+        };
+        combo_not_equal {
+            timeout-ms = <200>;
+            layers = <2>;
+            key-positions = <25 37>;
+            bindings = <&not_equ>;
+        };
+        combo_almost_equal {
+            timeout-ms = <200>;
+            layers = <2>;
+            key-positions = <14 37>;
+            bindings = <&alm_equ>;
+        };
+    };
+};
 // Mod Morphs, Encoder, Tap-Dances
 / {
     behaviors {
@@ -1015,12 +1116,33 @@
             tapping-term-ms = <200>;
             bindings = <&kp CLCK>, <&caps_word>;
         };
+        lscw: lscw {
+            compatible = "zmk,behavior-tap-dance";
+            label = "LEFT_SHIFT_CAPS_WORD";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LSHFT>, <&caps_word>;
+        };
+        rscw: rscw {
+            compatible = "zmk,behavior-tap-dance";
+            label = "RIGHT_SHIFT_CAPS_WORD";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp RSHFT>, <&caps_word>;
+        };
         stm: stm {
             compatible = "zmk,behavior-tap-dance";
             label = "SHIFT_TASK_MANAGER";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp LSHFT>, <&tm>;
+        };
+        pwr: pwr {
+            compatible = "zmk,behavior-tap-dance";
+            label = "POWER_COMMANDS";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp RSHFT>, <&slp>, <&rst>, <&off>;
         };
         td_btr: td_btr {
             compatible = "zmk,behavior-tap-dance";
@@ -1135,8 +1257,8 @@
 &kp ESC &kp N1 &kp N2     &kp N3   &kp N4    &kp N5                             &kp N6     &kp N7    &kp N8    &kp N9   &kp N0   &kp DEL
 &kp TAB &kp Q  &kp W      &kp E    &kp R     &kp T                              &kp Y      &kp U     &kp I     &kp O    &kp P    &kp BSPC
 &clcw   &kp A  &kp S      &kp D    &kp F     &kp G                              &kp H      &kp J     &kp K     &kp L    &kp SEMI &kp SQT
-&kp LSHIFT   &kp Z  &kp X      &kp C    &kp V     &kp B      &kp C_MUTE &close_tab   &kp N      &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHIFT
-                 &lwin_cad  &kp LALT &kp LCTRL &td_ll_l3  &kp SPACE &td_rl_l3  &kp RCTRL &kp RALT  &kp RGUI
+&lscw   &kp Z  &kp X      &kp C    &kp V     &kp B      &kp C_MUTE &close_tab   &kp N      &kp M     &kp COMMA &kp DOT  &kp FSLH &rscw
+               &lwin_cad  &kp LALT &kp LCTRL &td_ll_l3  &ret_menu  &kp SPACE    &td_rl_l3  &kp RCTRL &kp RALT  &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &tab_browser>;
@@ -1172,11 +1294,11 @@
 &kp F1    &kp F2    &kp F3    &kp F4      &kp F5    &kp F6                              &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
 &trans    &kp GRAVE &kp TILDE &td_lt      &td_gt    &kp QMARK                           &kp ASTRK &kp LBRC  &kp RBRC  &kp HOME  &kp END   &trans
 &schwa    &kp EXCL  &kp AT    &kp HASH    &kp DLLR  &kp PRCNT                           &kp UNDER &kp LPAR  &kp RPAR  &kp SEMI  &kp PIPE  &cc
-&trans    &kp EQUAL &kp MINUS &kp KP_PLUS &kp AMPS  &kp PIPE  &rgb_ug RGB_TOG   &trans  &kp CARET &kp LBKT  &kp RBKT  &kp COLON &kp BSLH  &trans
+&trans    &kp EQUAL &kp MINUS &kp KP_PLUS &kp AMPS  &kp PIPE  &rgb_ug RGB_TOG   &trans  &kp CARET &kp LBKT  &kp RBKT  &kp COLON &kp BSLH  &pwr
                     &trans    &trans      &trans    &mo 3     &pscode           &trans  &trans    &trans    &trans    &trans
             >;
 
-            sensor-bindings = <&rgb_encoder &inc_dec_kp C_BRI_INC C_BRI_DEC>;
+            sensor-bindings = <&rgb_encoder &inc_dec_kp PG_UP PG_DN>;
         };
         gaeilge_layer {
 // TODO: Some binds are waiting for shifted keycode support.
@@ -1198,3 +1320,5 @@
         };
     };
 };
+
+
