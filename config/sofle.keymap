@@ -1178,23 +1178,5 @@
 
             sensor-bindings = <&rgb_encoder &inc_dec_kp C_BRI_INC C_BRI_DEC>;
         };
-        gaeilge_layer {
-// TODO: Some binds are waiting for shifted keycode support.
-// ------------------------------------------------------------------------------------------------------------
-// |       |  ¡  |  °  |  £   |  ¢   |   ±  |                   |      |       |       |      |       |       |
-// |       |     |     |  é   |      |      |                   |      |   ú   |   í   |   ó  |       |       |
-// |       |  á  |  ś  |      |      |      |                   |      |       |       |   ł  |       |       |
-// |       |  ź  |     |  ć   |      |      |        |  |       |  ń   |       |       |      |   ¿   |       |
-//               |     |      |      |      |        |  |       |      |       |       |      |
-            bindings = <
-&trans    &inv_exc   &degree    &lb_euro   &us_cent  &plus_min                        &trans    &trans    &trans    &trans      &trans    &trans
-&trans    &trans     &trans     &td_sp_e   &trans    &trans                           &trans    &td_sp_u  &fada_i   &td_sp_o    &trans    &trans
-&trans    &td_sp_a   &td_sp_s   &trans     &trans    &trans                           &trans    &trans    &trans    &dark_l     &trans    &trans
-&trans    &td_sp_z   &trans     &acute_c   &trans    &trans    &trans         &trans  &td_sp_n  &trans    &trans    &trans      &inv_ques &trans
-                     &trans     &trans     &trans    &trans    &trans         &trans  &trans    &trans    &trans    &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp PG_DN PG_UP &inc_dec_kp C_VOL_UP C_VOL_DN>;
-        };
     };
 };
