@@ -22,7 +22,7 @@ Encoders: AlpsAlpine EC11N1524402
 
 LEDS: SK6812MINI
 
-Switches: Gikfun Micro Slide Switch Toggle Switch
+Switches: Gikfun Micro Slide Switch Toggle Switch 
 
 Case: Sofle RGB Analyst Case
 
