@@ -12,6 +12,17 @@
             low-power-enable;
         };
     };
+    i2c1_default: i2c1_default {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 26)>, <NRF_PSEL(TWIM_SCL, 0, 27)>;
+        };
+    };
+    i2c1_sleep: i2c1_sleep {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 26)>, <NRF_PSEL(TWIM_SCL, 0, 27)>;
+            low-power-enable;
+        };
+    };
 };
 
 &spi3 {
@@ -40,6 +51,9 @@
 &i2c1 {
     compatible = "nordic,nrf-twim";
     status = "okay";
+    pinctrl-0 = <&i2c1_default>;
+    pinctrl-1 = <&i2c1_sleep>;
+    pinctrl-names = "default", "sleep";
     sda-pin = <26>; /* Adjust as per your wiring */
     scl-pin = <27>; /* Adjust as per your wiring */
     clock-frequency = <I2C_BITRATE_STANDARD>;
