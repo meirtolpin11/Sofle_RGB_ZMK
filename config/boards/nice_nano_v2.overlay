@@ -1,5 +1,4 @@
 #include <dt-bindings/led/led.h>
-
 &pinctrl {
     spi3_default: spi3_default {
         group1 {
@@ -12,26 +11,13 @@
             low-power-enable;
         };
     };
-    i2c1_default: i2c1_default {
-        group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 0, 26)>, <NRF_PSEL(TWIM_SCL, 0, 27)>;
-        };
-    };
-    i2c1_sleep: i2c1_sleep {
-        group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 0, 26)>, <NRF_PSEL(TWIM_SCL, 0, 27)>;
-            low-power-enable;
-        };
-    };
 };
-
 &spi3 {
   compatible = "nordic,nrf-spim";
   status = "okay";
   pinctrl-0 = <&spi3_default>;
   pinctrl-1 = <&spi3_sleep>;
   pinctrl-names = "default", "sleep";
-
   led_strip: ws2812@0 {
     compatible = "worldsemi,ws2812-spi";
     label = "WS2812";
@@ -48,31 +34,8 @@
   };
 };
 
-&i2c1 {
-    compatible = "nordic,nrf-twim";
-    status = "okay";
-    pinctrl-0 = <&i2c1_default>;
-    pinctrl-1 = <&i2c1_sleep>;
-    pinctrl-names = "default", "sleep";
-    sda-pin = <26>; /* Adjust as per your wiring */
-    scl-pin = <27>; /* Adjust as per your wiring */
-    clock-frequency = <I2C_BITRATE_STANDARD>;
-
-    oled_display: oled@3c {
-        compatible = "solomon,sh1107fb";
-        reg = <0x3c>;
-        label = "OLED";
-        width = <128>;
-        height = <64>;
-        segment-offset = <0>;
-        page-offset = <0>;
-        reset-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>; /* Adjust as needed */
-    };
-};
-
 / {
     chosen {
         zmk,underglow = &led_strip;
-        zmk,display = &oled_display;
     };
 };
