@@ -14,11 +14,7 @@
 //Encoder Support
 //Alps Alpine EC11N1524402: 30 Detent, 15PPR, 2 Channel, Quadrature, 15000 Cycle
 / {
-    sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&left_encoder &right_encoder>;
-        triggers-per-rotation = <15>;
-    };
+
 };
 
 / {
