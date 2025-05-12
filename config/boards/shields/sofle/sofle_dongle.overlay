@@ -1,11 +1,18 @@
-#include <dt-bindings/zmk/matrix_transform.h>
+/*
+ * Copyright (c) 2022 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include "sofle.dtsi"
 
 / {
     chosen {
         zmk,kscan = &mock_kscan;
+        wakeup-source;
     };
 
-    mock_kscan: mock_kscan_0 {
+    mock_kscan: kscan_1 {
         compatible = "zmk,kscan-mock";
         columns = <0>;
         rows = <0>;
