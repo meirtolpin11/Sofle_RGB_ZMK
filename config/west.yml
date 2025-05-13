@@ -2,15 +2,15 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: pmd-coutinho
-      url-base: https://github.com/pmd-coutinho
+    - name: mctechnology17
+      url-base: https://github.com/mctechnology17
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
     - name: zmk-oled-adapter
-      remote: pmd-coutinho
+      remote: mctechnology17
       revision: main
   self:
     path: config
