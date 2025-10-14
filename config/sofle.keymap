@@ -1017,14 +1017,14 @@
             label = "TAP_LEFT_LAYER_LAYER_3";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mo 2>, <&sl 3>;
+            bindings = <&mo 3>, <&sl 3>;
         };
         td_rl_l3: td_rl_l3 {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_RIGHT_LAYER_LAYER_3";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mo 3>, <&sl 3>;
+            bindings = <&mo 4>, <&sl 3>;
         };
         td_sp_a: td_sp_a {
             compatible = "zmk,behavior-tap-dance";
@@ -1130,7 +1130,25 @@
 &kp TAB &kp Q  &kp W      &kp E    &kp R     &kp T                              &kp Y      &kp U     &kp I     &kp O    &kp P    &kp BSPC
 &clcw   &kp A  &kp S      &kp D    &kp F     &kp G                              &kp H      &kp J     &kp K     &kp L    &kp SEMI &kp SQT
 &kp LSHIFT   &kp Z  &kp X      &kp C    &kp V     &kp B &close_tab &kp C_MUTE  &kp N      &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHIFT
-                &lwin_cad &kp LALT &kp LCTRL       &td_ll_l3  &kp SPACE  &kp RET      &td_rl_l3  &kp RCTRL &kp RALT  &kp RGUI
+                &lwin_cad &kp LALT &kp LCTRL  &td_ll_l3  &kp SPACE  &kp RET      &td_rl_l3  &kp RCTRL &kp RALT  &kp RGUI
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &tab_browser>;
+        };
+
+    gaming {
+// ------------------------------------------------------------------------------------------------------------
+// |  ESC  |  1  |  2  |  3   |  4   |  5   |                    |  6   |  7    |  8    |  9   |   0   | DEL   |
+// |  TAB  |  Q  |  W  |  E   |  R   |  T   |                    |  Y   |  U    |  I    |  O   |   P   | BKSPC |
+// | CAPS  |  A  |  S  |  D   |  F   |  G   |                    |  H   |  J    |  K    |  L   |   ;   |   '   |
+// | SHIFT |  Z  |  X  |  C   |  V   |  B   |MUTE SPK|  |ClS  TAB|  N   |  M    |  ,    |  .   |   /   | SHIFT |
+//               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE  | RAISE| CTRL  | ALT   | GUI  |
+            bindings = <
+&kp ESC &kp N1 &kp N2     &kp N3   &kp N4    &kp N5                             &kp N6     &kp N7    &kp N8    &kp N9   &kp N0   &kp DEL
+&kp TAB &kp Q  &kp W      &kp E    &kp R     &kp T                              &kp Y      &kp U     &kp I     &kp O    &kp P    &kp BSPC
+&clcw   &kp A  &kp S      &kp D    &kp F     &kp G                              &kp H      &kp J     &kp K     &kp L    &kp SEMI &kp SQT
+&kp LSHIFT   &kp Z  &kp X      &kp C    &kp V     &kp B &close_tab &kp C_MUTE  &kp N      &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHIFT
+                &lwin_cad &kp LALT &kp LCTRL  &kp SPACE  &td_ll_l3  &kp RET      &td_rl_l3  &kp RCTRL &kp RALT  &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &tab_browser>;
@@ -1171,24 +1189,6 @@
             >;
 
             sensor-bindings = <&rgb_encoder &inc_dec_kp C_BRI_INC C_BRI_DEC>;
-        };
-
-        gaming {
-// ------------------------------------------------------------------------------------------------------------
-// |  ESC  |  1  |  2  |  3   |  4   |  5   |                    |  6   |  7    |  8    |  9   |   0   | DEL   |
-// |  TAB  |  Q  |  W  |  E   |  R   |  T   |                    |  Y   |  U    |  I    |  O   |   P   | BKSPC |
-// | CAPS  |  A  |  S  |  D   |  F   |  G   |                    |  H   |  J    |  K    |  L   |   ;   |   '   |
-// | SHIFT |  Z  |  X  |  C   |  V   |  B   |MUTE SPK|  |ClS  TAB|  N   |  M    |  ,    |  .   |   /   | SHIFT |
-//               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE  | RAISE| CTRL  | ALT   | GUI  |
-            bindings = <
-&kp ESC &kp N1 &kp N2     &kp N3   &kp N4    &kp N5                             &kp N6     &kp N7    &kp N8    &kp N9   &kp N0   &kp DEL
-&kp TAB &kp Q  &kp W      &kp E    &kp R     &kp T                              &kp Y      &kp U     &kp I     &kp O    &kp P    &kp BSPC
-&clcw   &kp A  &kp S      &kp D    &kp F     &kp G                              &kp H      &kp J     &kp K     &kp L    &kp SEMI &kp SQT
-&kp LSHIFT   &kp Z  &kp X      &kp C    &kp V     &kp B &close_tab &kp C_MUTE  &kp N      &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHIFT
-                &lwin_cad &kp LALT &kp LCTRL  &kp SPACE  &td_ll_l3   &kp RET      &td_rl_l3  &kp RCTRL &kp RALT  &kp RGUI
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &tab_browser>;
         };
     };
 };
