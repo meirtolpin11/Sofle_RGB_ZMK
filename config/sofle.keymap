@@ -1096,10 +1096,17 @@
             tapping-term-ms = <200>;
             bindings = <&kp LGUI>, <&cad>;
         };
+        
+        // custom ones - mtolpin
         switch_lang_windows_caps: switch_lang_windows_caps {
-            label = "SWITCH_LANG_WINDOWS_CAPS";
-            tapping-term-ms = <200>;
-            bindings = <&kp ALT &kp LSHIFT>;
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <
+                &macro_press   &kp LALT
+                &macro_press   &kp LSHIFT
+                &macro_release &kp LSHIFT
+                &macro_release &kp LALT
+            >;
         };
     };
     keymap {
@@ -1190,7 +1197,7 @@
 &bootloader    &kp GRAVE &kp TILDE &td_lt      &td_gt    &kp QMARK                           &kp ASTRK &kp LBRC  &kp RBRC  &kp HOME  &kp END   &trans
 &schwa    &kp EXCL  &kp AT    &kp HASH    &kp DLLR  &kp PRCNT                           &kp UNDER &kp LPAR  &kp RPAR  &kp SEMI  &kp PIPE  &cc
 &trans    &kp EQUAL &kp MINUS &kp KP_PLUS &kp AMPS  &kp PIPE     &trans &rgb_ug RGB_TOG  &kp CARET &kp LBKT  &kp RBKT  &kp COLON &kp BSLH  &bootloader
-                    &tog 2    &tog 1    &trans    &mo 3     &pscode           &trans  &trans    &kp RCTRL &kp RALT  &kp RGUI
+                    &tog 4    &tog 1    &trans    &mo 3     &pscode           &trans  &trans    &kp RCTRL &kp RALT  &kp RGUI
             >;
 
             sensor-bindings = <&rgb_encoder &inc_dec_kp C_BRI_INC C_BRI_DEC>;
