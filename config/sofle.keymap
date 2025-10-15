@@ -12,7 +12,30 @@
 
 
 / {
+
+    combos {
+        compatible = "zmk,combos";
+
+        combo_ctrl_tab {
+            timeout-ms = <50>;
+            key-positions = <52 12>;    // replace with your actual Ctrl + Tab positions
+            bindings = <&alt_tab_macro>;
+            layers = <1>;               // only active on layer 1
+        };
+    };
+
     macros {
+         alt_tab_macro: alt_tab_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+
+            bindings = <
+                &macro_press   &kp LALT      // hold Alt
+                &macro_tap     &kp TAB       // press Tab while holding Alt
+                &macro_release &kp LALT      // release Alt
+            >;
+        };
+
 // System and Power
         tm: tm {
             label = "TASK_MANAGER";
@@ -1127,7 +1150,7 @@
                  &kp LCTRL &kp LALT &lwin_cad &td_ll_l3  &kp SPACE &kp RET      &td_rl_l3  &kp RCTRL &kp RALT  &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &tab_browser>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &tab_browser>;
         };
 
         windows_layer {
@@ -1145,7 +1168,7 @@
                 &lwin_cad &kp LALT &kp LCTRL  &td_ll_l3  &kp SPACE  &kp RET      &td_rl_l3  &kp RCTRL &kp RALT  &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &tab_browser>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &tab_browser>;
         };
 
     gaming {
