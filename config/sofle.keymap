@@ -13,28 +13,9 @@
 
 / {
 
-    combos {
-        compatible = "zmk,combos";
-
-        combo_ctrl_tab {
-            timeout-ms = <50>;
-            key-positions = <52 12>;    // replace with your actual Ctrl + Tab positions
-            bindings = <&alt_tab_macro>;
-            layers = <1>;               // only active on layer 1
-        };
-    };
 
     macros {
-         alt_tab_macro: alt_tab_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
 
-            bindings = <
-                &macro_press   &kp LALT      // hold Alt
-                &macro_tap     &kp TAB       // press Tab while holding Alt
-                &macro_release &kp LALT      // release Alt
-            >;
-        };
 
 // System and Power
         tm: tm {
