@@ -212,13 +212,13 @@
 // |Boot  |  `   |  ~   |  <   |  >   |  ?   |                    |  *   |  {   |  }   | Home | End  |      |
 // |      |  !   |  @   |  #   |  $   |  %   |                    |  _   |  (   |  )   |  ;   |  |   |Color |
 // |      |  =   |  -   |  +   |  &   |  |   | RGB    |       |      | ^    |  [   |  ]   |  :   |  \   | Power |
-//               | Tog2 | Tog1 |      | Mo3  | PScode |       |       | Ctrl | Alt  | GUI |
+//               | Tog2 | Tog1 |      | Mo3  |        |       |       | Ctrl | Alt  | GUI |
             bindings = <
 &kp F1    &kp F2    &kp F3    &kp F4      &kp F5    &kp F6                              &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
 &bootloader    &kp GRAVE &kp TILDE &kp LT      &kp GT    &kp QMARK                           &kp ASTRK &kp LBRC  &kp RBRC  &kp HOME  &kp END   &trans
 &trans    &kp EXCL  &kp AT    &kp HASH    &kp DLLR  &kp PRCNT                           &kp UNDER &kp LPAR  &kp RPAR  &kp SEMI  &kp PIPE  &trans
 &trans    &kp EQUAL &kp MINUS &kp KP_PLUS &kp AMPS  &kp PIPE     &trans &rgb_ug RGB_TOG  &kp CARET &kp LBKT  &kp RBKT  &kp COLON &kp BSLH  &bootloader
-                    &tog 2    &tog 1    &trans    &mo 3     &pscode           &trans  &trans    &kp RCTRL &kp RALT  &kp RGUI
+                    &tog 2    &tog 1    &trans    &mo 3     &trans           &trans  &trans    &kp RCTRL &kp RALT  &kp RGUI
             >;
 
             sensor-bindings = <&rgb_encoder &inc_dec_kp C_BRI_INC C_BRI_DEC>;
