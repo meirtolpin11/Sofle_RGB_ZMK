@@ -38,29 +38,6 @@
             >;
         };
 
-        // Macro: Turn layer 0 OFF
-        layer0_off: layer0_off {
-            label = "LAYER0_OFF";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <
-                &tog_off 0          // turn layer 0 OFF
-            >;
-        };
-
-        // Macro: Turn layer 1 OFF
-        layer1_off: layer1_off {
-            label = "LAYER1_OFF";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <
-                &tog_off 1          // turn layer 1 OFF
-            >;
-        };
         // Browser Controls
         tab_right: tab_right {
             label = "TAB_RIGHT";
@@ -103,10 +80,9 @@
     // Toggle Layer ON only
     tog_on: toggle_layer_on_only {
         compatible = "zmk,behavior-toggle-layer";
-        #binding-cells = <1>;      // layer number
         display-name = "Toggle Layer On";
         toggle-mode = "on";        // only turns layer ON
-        locking;                   // optional: locks until explicitly turned off
+       
     };
 
     // Toggle Layer OFF only
@@ -115,7 +91,7 @@
         #binding-cells = <1>;      // layer number
         display-name = "Toggle Layer Off";
         toggle-mode = "off";       // only turns layer OFF
-        locking;                   // optional: locks until explicitly turned on
+
     };
     // Mod Morph
     // RGB
