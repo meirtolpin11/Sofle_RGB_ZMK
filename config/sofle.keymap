@@ -89,13 +89,13 @@
                 <&macro_release &kp LALT>;
         };
     
-        d_ctrl_morph: d_ctrl_morph {
+    d_ctrl_morph: d_ctrl_morph {
             compatible = "zmk,behavior-mod-morph";
             label = "D_CTRL_MORPH";
             #binding-cells = <0>;
 
             mods = <(MOD_LCTL | MOD_RCTL)>;
-            bindings = <&alt_d_macro>, <&kp D>;
+            bindings = <&kp D>, <&alt_d_macro>;
         };
     
     // Toggle Layer ON only
