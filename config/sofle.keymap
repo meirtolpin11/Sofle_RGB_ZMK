@@ -77,6 +77,27 @@
 // Mod Morphs, Encoder, Tap-Dances
 / {
     behaviors {
+
+    alt_d_macro: alt_d_macro {
+            compatible = "zmk,behavior-macro";
+            label = "ALT_D_MACRO";
+            #binding-cells = <0>;
+
+            bindings =
+                <&macro_press   &kp LALT>,
+                <&macro_tap     &kp D>,
+                <&macro_release &kp LALT>;
+        };
+    
+        d_ctrl_morph: d_ctrl_morph {
+            compatible = "zmk,behavior-mod-morph";
+            label = "D_CTRL_MORPH";
+            #binding-cells = <0>;
+
+            mods = <(MOD_LCTL | MOD_RCTL)>;
+            bindings = <&alt_d_macro>, <&kp D>;
+        };
+    
     // Toggle Layer ON only
     tog_on: toggle_layer_on_only {
         compatible = "zmk,behavior-toggle-layer";
@@ -205,7 +226,7 @@
             bindings = <
 &kp ESC &kp N1 &kp N2     &kp N3   &kp N4    &kp N5                             &kp N6     &kp N7    &kp N8    &kp N9   &kp N0   &kp DEL
 &kp TAB &kp Q  &kp W      &kp E    &kp R     &kp T                              &kp Y      &kp U     &kp I     &kp O    &kp P    &kp BSPC
-&switch_lang_windows_caps   &kp A  &kp S      &kp D    &kp F     &kp G                              &kp H      &kp J     &kp K     &kp L    &kp SEMI &kp SQT
+&switch_lang_windows_caps   &kp A  &kp S      &d_ctrl_morph    &kp F     &kp G                              &kp H      &kp J     &kp K     &kp L    &kp SEMI &kp SQT
 &kp LSHIFT   &kp Z  &kp X      &kp C    &kp V     &kp B &close_tab &kp C_MUTE  &kp N      &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHIFT
                 &kp LGUI &kp LALT &kp LCTRL  &td_ll_l3  &kp SPACE  &kp RET      &td_rl_l3  &kp RCTRL &kp RALT  &kp RGUI
             >;
