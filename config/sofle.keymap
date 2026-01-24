@@ -82,7 +82,7 @@
         compatible = "zmk,behavior-toggle-layer";
         display-name = "Toggle Layer On";
         toggle-mode = "on";        // only turns layer ON
-       
+        locking;
     };
 
     // Toggle Layer OFF only
@@ -91,8 +91,9 @@
         #binding-cells = <1>;      // layer number
         display-name = "Toggle Layer Off";
         toggle-mode = "off";       // only turns layer OFF
-
+        locking;
     };
+
     // Mod Morph
     // RGB
         rgb_bri_sat_inc: rgb_bri_sat_inc {
