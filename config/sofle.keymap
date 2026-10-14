@@ -74,6 +74,20 @@
         };
     };
 };
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+
+        combo_backspace {
+            timeout-ms = <50>;
+            key-positions = <31 32>;
+            bindings = <&kp BSPC>;
+            layers = <0 1>;
+        };
+    };
+};
+
 // Mod Morphs, Encoder, Tap-Dances
 / {
     behaviors {
