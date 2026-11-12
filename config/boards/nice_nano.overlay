@@ -1,4 +1,13 @@
 #include <dt-bindings/led/led.h>
+#include <zephyr/dt-bindings/regulator/nrf5x.h>
+
+&reg0 {
+    status = "disabled";
+};
+
+&reg1 {
+    regulator-initial-mode = <NRF5X_REG_MODE_LDO>;
+};
 &pinctrl {
     spi3_default: spi3_default {
         group1 {
